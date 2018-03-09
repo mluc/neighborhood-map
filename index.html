@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body class="black">
+
+    <nav id="drawer" class="black">
+        <h2>Restaurant Locations</h2>
+        <div>
+            <div id="input-section">
+                <input data-bind="textInput: city" placeholder="Enter a city, state">
+                <input data-bind="click: searchButtonCick" type="button" value="Search">
+
+                <input data-bind="visible: showFilterTextBox, textInput: filterRestaurant" placeholder="Restaurant name">
+
+            </div>
+
+            <ul id="restaurant-section" data-bind="foreach: restaurantList">
+                <li data-bind="text: name, click: $parent.setSelectedRestaurant"></li>
+            </ul>
+
+        </div>
+    </nav>
+
+    <main>
+        <a id="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"></path>
+            </svg>
+        </a>
+
+        <div id="map"></div>
+        <div id="infowindow-text" data-bind="with: restaurantInfo">
+            <strong data-bind="text: restaurantName"></strong>
+            <br>
+            <div data-bind="text: restaurantAddess"></div>
+            <br>
+            <div data-bind="text: restaurantUrl"></div>
+            <br>
+            <br>
+
+        </div>
+
+
+    </main>
+    <script src="js/knockout-3.4.2.js"></script>
+    <script src="js/googlemap.js"></script>
+    <script src="js/input.js"></script>
+    <script src="js/restaurant.js"></script>
+    <script src="js/foursquare.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC4rj-PEK2n5yzAaV61bwcQLwTgWmdvMQI&callback=initMap"
+            async defer onerror="mapError()"></script>
+
+</body>
+</html>
